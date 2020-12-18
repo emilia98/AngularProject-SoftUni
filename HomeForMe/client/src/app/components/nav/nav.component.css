@@ -10,3 +10,7 @@ nav .nav-item.dropdown:focus {
 nav .nav-item hr{
     margin: 0.5rem 0;
 }
+
+nav .dropdown-item {
+    cursor: pointer;
+}
