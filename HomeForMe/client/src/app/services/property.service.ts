@@ -24,6 +24,21 @@ export class PropertyService {
         });
   }
 
+  getAddData() {
+    return this.http.get(this.baseUrl + 'new/data')
+      .pipe((response: any) => {
+        return response;
+      });
+  }
+
+  addNew(model: any) {
+    let headers = this.generateAuthHeaders();
+    return this.http.post(this.baseUrl + 'new', model, { headers: headers })
+      .pipe((response: any) => {
+        return response;
+      })
+  }
+
   private generateAuthHeaders() {
     let userItem = localStorage.getItem('user');
     let token = null;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -95,7 +96,7 @@ namespace API.Controllers
 
             if (propertyType == null) {
                 return BadRequest(new {
-                    Mesasge = "Invalid property type!",
+                    Message = "Invalid property type!",
                     HasFormError = true
                 });
             }
@@ -112,16 +113,19 @@ namespace API.Controllers
 
             var property = new Property
             {
-                Location = location,
-                PropertyType = propertyType,
-                User = userByUsername,
-                Price = propertyInputModel.Price,
-                Bedrooms = propertyInputModel.Bedrooms,
-                Description = propertyInputModel.Description
+                LocationId = locationId.Value,
+                PropertyTypeId = typeId.Value,
+                UserId = userByUsername.Id,
+                Price = propertyInputModel.Price.Value,
+                Bedrooms = propertyInputModel.Bedrooms.Value,
+                Bathrooms = propertyInputModel.Bathrooms.Value,
+                Description = propertyInputModel.Description,
+                AddedAt = DateTime.Now,
+                ForRent = true
             };
 
             try {
-                await this._dbContext.Properties.AddAsync(property);
+                 this._dbContext.Properties.Add(property);
                 await _dbContext.SaveChangesAsync();
             } catch {
                 return BadRequest(new {

@@ -14,7 +14,7 @@ namespace API.Entities
 
         public string Description { get; set; }
 
-        public string ImageUrl { get; set; }
+        // public string ImageUrl { get; set; }
 
         public bool ForRent { get; set; }
 
@@ -30,7 +30,7 @@ namespace API.Entities
 
         public virtual Location Location { get; set; }
 
-        public int TypeId { get; set; }
+        public int PropertyTypeId { get; set; }
 
         public virtual PropertyType PropertyType { get; set; }
     }
