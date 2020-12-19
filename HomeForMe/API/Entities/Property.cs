@@ -14,7 +14,7 @@ namespace API.Entities
 
         public string Description { get; set; }
 
-        // public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public bool ForRent { get; set; }
 
