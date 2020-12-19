@@ -30,6 +30,15 @@ export class AuthService {
       );
   }
 
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'register', model)
+      .pipe(
+        map((response: User) => {
+          return response
+        })
+      )
+  }
+
   setCurrentUser(user: User) {
     this.currentUserSource.next(user);
   }
