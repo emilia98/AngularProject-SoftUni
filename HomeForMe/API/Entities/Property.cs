@@ -10,7 +10,7 @@ namespace API.Entities
 
         public decimal Price { get; set; }
 
-        public string Decription { get; set; }
+        public string Description { get; set; }
 
         public bool ForRent { get; set; }
 
@@ -21,5 +21,9 @@ namespace API.Entities
         public int UserId { get; set; }
         
         public virtual AppUser User { get; set; }
+
+        public int LocationId { get; set; }
+
+        public virtual Location Location { get; set; }
     }
 }

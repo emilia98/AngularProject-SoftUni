@@ -63,12 +63,16 @@ namespace API.Controllers
             });
         }
 
-        /*
+        
         [HttpGet("new/data")]
-        public IActionResult GetNewPropertyInfo()
+        public async Task<IActionResult> GetNewPropertyInfo()
         {
-            var locations = new List<>
+            var locations = await this._dbContext.Locations.ToListAsync();
+
+            return Ok(new {
+                Locations = locations
+            });
         }
-        */
+        
     }
 }
