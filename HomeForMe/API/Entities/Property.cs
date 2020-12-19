@@ -8,9 +8,13 @@ namespace API.Entities
 
         public int Bedrooms { get; set; }
 
+        public int Bathrooms { get; set; }
+
         public decimal Price { get; set; }
 
         public string Description { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public bool ForRent { get; set; }
 
@@ -25,5 +29,9 @@ namespace API.Entities
         public int LocationId { get; set; }
 
         public virtual Location Location { get; set; }
+
+        public int TypeId { get; set; }
+
+        public virtual PropertyType PropertyType { get; set; }
     }
 }
