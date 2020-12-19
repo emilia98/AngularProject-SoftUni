@@ -4,11 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
-  selector: 'app-property-my',
-  templateUrl: './property-my.component.html',
-  styleUrls: ['./property-my.component.css']
+  selector: 'app-property-list-all',
+  templateUrl: './property-list-all.component.html',
+  styleUrls: ['./property-list-all.component.css']
 })
-export class PropertyMyComponent implements OnInit {
+export class PropertyListAllComponent implements OnInit {
   properties: any = [];
   defaultImage: string = 'https://www.tibs.org.tw/images/default.jpg';
 
@@ -19,9 +19,9 @@ export class PropertyMyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.propertyService.getMine()
+    this.propertyService.getAll()
       .subscribe((response: any) => {
-        this.properties = response.properties;
+        this.properties = response;
       }, (error: any) => {
         if (error.status == 401) {
           this.toastrService.error('Cannot access this page!')
@@ -30,5 +30,4 @@ export class PropertyMyComponent implements OnInit {
         console.log(error);
       });
   }
-
 }

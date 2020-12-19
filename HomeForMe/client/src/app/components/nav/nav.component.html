@@ -11,10 +11,7 @@
                     <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Properties</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Wishlisted</a>
+                    <a class="nav-link" routerLink="/property/list" routerLinkActive="active">Properties</a>
                 </li>
             </ul>
             <ul *ngIf="!(authService.currentUser$ | async)" class="navbar-nav ml-auto">
@@ -34,12 +31,11 @@
                         Welcome, user
                     </a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-                        <a ngbDropdownItem href="#" (click)="$event.preventDefault()">My Profile</a>
+                        <!-- <a ngbDropdownItem href="#" (click)="$event.preventDefault()">My Profile</a> -->
                         <a ngbDropdownItem routerLink="/property/my">My Properties</a>
-                        <a ngbDropdownItem href="#" (click)="$event.preventDefault()">My Wishlist</a>
+                        <!-- <a ngbDropdownItem href="#" (click)="$event.preventDefault()">My Wishlist</a> -->
                         <hr />
                         <a ngbDropdownItem (click)="logout()">Logout</a>
-                        <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Something else here</a>
                     </div>
                 </li>
             </ul>

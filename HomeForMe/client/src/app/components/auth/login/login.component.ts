@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.errors = error.error.errors;
           this.toastrService.error("Fill up the form properly to log in!")
         } else {
-          this.toastrService.error(error)
+          this.toastrService.error(error.message ?? error)
         }
       })
   }
