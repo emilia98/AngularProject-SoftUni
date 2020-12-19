@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  properties: any = [];
 
-  constructor() { }
+  constructor(
+    private propertyService : PropertyService,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
+    this.propertyService.getAll()
+      .subscribe((response: any) => {
+        this.properties = response;
+      }, error => {
+        this.toastrService.error("Error occurred while fetching all properties");
+      });
   }
-
 }
