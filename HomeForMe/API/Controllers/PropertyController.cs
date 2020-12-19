@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +25,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Property>> GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var property = await this._dbContext.Properties.FindAsync(id);
 
@@ -35,8 +38,37 @@ namespace API.Controllers
             }
 
             return Ok(new {
-                property = property
+                Property = property
             });
         }
+
+        [Authorize]
+        [HttpGet("my")]
+        public async Task<IActionResult> GetAllByUser()
+        {
+            var username = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userByUsername = await this._dbContext.Users.FirstOrDefaultAsync(u => u.UserName == username);
+                
+            if (userByUsername == null) {
+                return Unauthorized(new {
+                    Message = "Something went wrong while fetching you properties!",
+                    HasError = true
+                });
+            }
+
+            var properties = await this._dbContext.Properties.Where(x => x.UserId == userByUsername.Id).ToListAsync();
+
+            return Ok(new {
+                Properties = properties
+            });
+        }
+
+        /*
+        [HttpGet("new/data")]
+        public IActionResult GetNewPropertyInfo()
+        {
+            var locations = new List<>
+        }
+        */
     }
 }
