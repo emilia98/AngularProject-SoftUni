@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { PropertyNewComponent } from './components/property/property-new/property-new.component';
+import { PropertyListAllComponent } from './components/property/property-list-all/property-list-all.component';
+import { PropertyMyComponent } from './components/property/property-my/property-my.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     FormComponent,
     HomeComponent,
+    PropertyNewComponent,
+    PropertyListAllComponent,
+    PropertyMyComponent,
   ],
   imports: [
     BrowserModule,

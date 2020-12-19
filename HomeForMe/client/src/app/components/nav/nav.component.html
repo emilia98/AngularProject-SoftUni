@@ -27,7 +27,7 @@
             </ul>
             <ul *ngIf="authService.currentUser$ | async" class="navbar-nav ml-auto">
                 <li class="nav-item mr-2">
-                    <a class="btn btn-outline-primary" href="#">Add New</a>
+                    <a class="btn btn-outline-primary" routerLink="/property/new">Add New</a>
                 </li>
                 <li class="nav-item" ngbDropdown>
                     <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">
@@ -35,6 +35,7 @@
                     </a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
                         <a ngbDropdownItem href="#" (click)="$event.preventDefault()">My Profile</a>
+                        <a ngbDropdownItem routerLink="/property/my">My Properties</a>
                         <a ngbDropdownItem href="#" (click)="$event.preventDefault()">My Wishlist</a>
                         <hr />
                         <a ngbDropdownItem (click)="logout()">Logout</a>
